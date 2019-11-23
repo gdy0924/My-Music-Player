@@ -187,7 +187,7 @@ public class Play extends AppCompatActivity {
                 song_id++;
                 if(song_id > songs.length - 1){
                     song_id--;
-                    Toast.makeText(Play.this,"已经到最后一首歌了😯",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Play.this,"已经到最后一首歌",Toast.LENGTH_LONG).show();
                 }else {
                     musicPlay(a, song_id);
                 }
@@ -200,7 +200,7 @@ public class Play extends AppCompatActivity {
                 song_id--;
                 if(song_id < 0){
                     song_id++;
-                    Toast.makeText(Play.this,"没有上一首歌了大兄弟",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Play.this,"没有上一首歌",Toast.LENGTH_LONG).show();
                 }else {
                     musicPlay(a, song_id);
                 }
@@ -240,7 +240,7 @@ public class Play extends AppCompatActivity {
                 int number = MainActivity.getRandom(songs);
                 if(song_id > songs.length - 1){
                     song_id--;
-                    Toast.makeText(Play.this,"已经到最后一首歌了😯",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Play.this,"已经到最后一首歌",Toast.LENGTH_LONG).show();
                 }else {
                     musicPlay(a, number);
                 }
@@ -253,7 +253,7 @@ public class Play extends AppCompatActivity {
                 int number = MainActivity.getRandom(songs);
                 if(song_id < 0){
                     song_id++;
-                    Toast.makeText(Play.this,"没有上一首歌了大兄弟",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Play.this,"没有上一首歌",Toast.LENGTH_LONG).show();
                 }else {
                     musicPlay(a, song_id);
                 }

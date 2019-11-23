@@ -17,6 +17,10 @@
             android:id="@+id/back"
             android:layout_width="50dp"
             android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
             android:background="?attr/homeAsUpIndicator"
             android:textSize="20sp" />
 
