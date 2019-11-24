@@ -51,12 +51,15 @@ public class MainActivity extends AppCompatActivity {
 
     //随机播放
     private ImageView random;
+    private TextView ps;
+    private boolean style_flag = false;
 
     /*选择跳转页面按钮*/
     private Button myList;//左边代表进入我的歌单
     private Button play;//右边代表进入音乐播放界面
 
     private ListView listView;
+
     ArrayAdapter<String> adapter;
 
     @Override
@@ -64,18 +67,48 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_show);
 
-        random = (ImageView)findViewById(R.id.random);
+        random=(ImageView)findViewById(R.id.random);
+        ps=(TextView)findViewById(R.id.ps) ;
         random.setOnClickListener(new View.OnClickListener() {
             @Override
+            public void onClick(View view) {
+                if(style_flag == false){
+                    random.setImageDrawable(getResources().getDrawable(R.drawable.random));
+                    ps.setText("随机播放");
+                    //Log.e("style", "随机播放");
+                    style_flag = true;
+                }else{
+                    random.setImageDrawable(getResources().getDrawable(R.drawable.order_play));
+                    ps.setText("顺序播放");
+                    //Log.e("style", "顺序播放");
+                    style_flag = false;
+                }
+            }
+        });
+
+        play_all = (ImageView)findViewById(R.id.play_all);
+        play_all.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-                int number = getRandom(songs.getSongs());
-                String[] s = songs.getSongs();
-                Log.e("随机的歌曲编号","" + number);
-                Log.d("点击的歌曲名",s[number]);
-                Intent intent = new Intent(MainActivity.this, Play.class);
-                intent.putExtra("song_id","" + number);
-                intent.putExtra("songs", songs.getSongs());
-                startActivity(intent);
+                if(style_flag == false){
+                    int number = 0;
+                    String[] s = songs.getSongs();
+//                    Log.e("随机的歌曲编号", "" + number);
+//                    Log.d("点击的歌曲名", s[number]);
+                    Intent intent = new Intent(MainActivity.this, Play.class);
+                    intent.putExtra("song_id", "" + number);
+                    intent.putExtra("songs", songs.getSongs());
+                    startActivity(intent);
+                }else {
+                    int number = getRandom(songs.getSongs());
+                    String[] s = songs.getSongs();
+//                    Log.e("随机的歌曲编号", "" + number);
+//                    Log.d("点击的歌曲名", s[number]);
+                    Intent intent = new Intent(MainActivity.this, Play.class);
+                    intent.putExtra("song_id", "" + number);
+                    intent.putExtra("songs", songs.getSongs());
+                    startActivity(intent);
+                }
             }
         });
 

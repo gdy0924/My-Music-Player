@@ -135,12 +135,13 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="160dp"
-                android:src="@drawable/random_play" />
+                android:src="@drawable/order_play" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="随机播放"
+                android:text="顺序播放"
                 android:layout_marginTop="10dp"
+                android:id="@+id/ps"
                 />
         </LinearLayout>
 

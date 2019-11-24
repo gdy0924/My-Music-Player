@@ -118,7 +118,7 @@ public class Play extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(style_flag == false){
-                    play_style.setImageDrawable(getResources().getDrawable(R.drawable.random_play));
+                    play_style.setImageDrawable(getResources().getDrawable(R.drawable.random));
                     //Log.e("style", "随机播放");
                     playRandom(a, song_id);
                     randomClick(a, songs);
