@@ -45,7 +45,7 @@ public class Play extends AppCompatActivity {
 
     //控制播放方式
     private ImageView play_style;
-    private boolean style_flag = false;
+    private int style_flag = 1;
 
     //private String[] a;//歌曲名单 用数组的方式存储 路径名
     private int b = 0;//用b来控制数组a
@@ -54,7 +54,7 @@ public class Play extends AppCompatActivity {
     private ImageView back;//返回按钮
     private ImageView add_item;//添加到我的歌单按钮
 
-    private boolean flag = false;
+    private int flag = 1;
     private int music_id;
 
     private TextView song_name;
@@ -105,11 +105,11 @@ public class Play extends AppCompatActivity {
         }
 
         play_style = (ImageView)findViewById(R.id.play_style);
-        if(style_flag == false){
+        if(style_flag == 1){
             Log.e("style", "顺序播放");
             playInOrder(a, song_id);
             Click(a, songs);
-        }else if(style_flag == true){
+        }else if(style_flag == 0){
             Log.e("style", "随机播放");
             playRandom(a,song_id);
             randomClick(a, songs);
@@ -117,18 +117,18 @@ public class Play extends AppCompatActivity {
         play_style.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(style_flag == false){
+                if(style_flag == 1){
                     play_style.setImageDrawable(getResources().getDrawable(R.drawable.random));
                     //Log.e("style", "随机播放");
                     playRandom(a, song_id);
                     randomClick(a, songs);
-                    style_flag = true;
+                    style_flag = 0;
                 }else{
                     play_style.setImageDrawable(getResources().getDrawable(R.drawable.order_play));
                     //Log.e("style", "顺序播放");
                     playInOrder(a, song_id);
                     Click(a, songs);
-                    style_flag = false;
+                    style_flag = 1;
                 }
             }
         });
@@ -161,7 +161,7 @@ public class Play extends AppCompatActivity {
         b_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(flag == false) {
+                if(flag == 1) {
                     //点击start按钮转成pause按钮
                     b_start.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_media_pause));
                     //handler下面
@@ -171,13 +171,13 @@ public class Play extends AppCompatActivity {
                     needleMove();
                     mediaPlayer.start();
                     Log.d("MainActivity", String.valueOf(flag));
-                    flag = true;
+                    flag = 0;
 
                 }else{
                     mediaPlayer.pause();
                     diskStop();
                     b_start.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_media_play));
-                    flag = false;
+                    flag = 1;
                 }
             }
         });
@@ -214,7 +214,7 @@ public class Play extends AppCompatActivity {
         b_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(flag == false) {
+                if(flag == 1) {
                     //点击start按钮转成pause按钮
                     b_start.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_media_pause));
                     //handler下面
@@ -224,13 +224,13 @@ public class Play extends AppCompatActivity {
                     needleMove();
                     mediaPlayer.start();
                     Log.d("MainActivity", String.valueOf(flag));
-                    flag = true;
+                    flag = 0;
 
                 }else{
                     mediaPlayer.pause();
                     diskStop();
                     b_start.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_media_play));
-                    flag = false;
+                    flag = 1;
                 }
             }
         });
@@ -266,7 +266,7 @@ public class Play extends AppCompatActivity {
     public void playInOrder(final String[] song, int id){
         b_start = (ImageView) findViewById(R.id.b_start);
         b_start.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_media_pause));
-        flag = true;
+        flag = 0;
         //处理现在播放的位置
         handler.sendEmptyMessage(1);
         //播放&获取整首歌的时间给time_right
@@ -287,7 +287,7 @@ public class Play extends AppCompatActivity {
     public void playRandom(final String[] song, int id){
         b_start = (ImageView) findViewById(R.id.b_start);
         b_start.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_media_pause));
-        flag = true;
+        flag = 0;
         //处理现在播放的位置
         handler.sendEmptyMessage(1);
         //播放&获取整首歌的时间给time_right
